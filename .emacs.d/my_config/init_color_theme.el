@@ -1,0 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/init/color-theme/") 
+(require 'color-theme)
+(color-theme-initialize)
+(setq color-theme-is-global t)
+(color-theme-dark-blue2)
+(provide 'init_color_theme)

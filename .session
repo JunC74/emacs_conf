@@ -1,0 +1,5 @@
+;;; Automatically generated on Tue Jun 24 14:07:25 2014
+;;; Invoked by Administrator@WIN-4DLGDA7DD3D using 24.3.1
+(setq-default session-file-alist '(("c:/Users/Administrator/Documents/GitHub/emacs_conf/.emacs.d/my_config/init_emacs.el" 2124 586 1 nil nil 2124 (overwrite-mode))))
+(setq-default file-name-history '("c:/Users/Administrator/Documents/GitHub/emacs_conf/.emacs.d/my_config/init_emacs.el"))
+(setq-default occur-collect-regexp-history '("\\1"))
