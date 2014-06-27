@@ -1,4 +1,3 @@
-;; (add-to-list 'load-path "~/.emacs.d/init/auto-complete/") 
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/init/auto-complete/dict")
 (ac-config-default)

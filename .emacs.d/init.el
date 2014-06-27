@@ -9,5 +9,6 @@
 (require 'init_lua)
 (require 'init_auto_complete)
 (require 'init_color_theme)
+(require 'init_dired_mode)
 
 (provide 'init)

@@ -6,4 +6,6 @@
 (add-to-list 'load-path "~/.emacs.d")
 (load-file "~/.emacs.d/init.el")
 
+;; windows Â·¾¶ÉèÖÃ
+;; (setenv "PATH" "C:\cygwin64\bin")
 ;; (put 'scroll-left 'disabled nil)
