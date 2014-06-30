@@ -3,3 +3,6 @@ E:
 cd code/client/jw_head/
 cd ui/script/window/
 grep -n "drop" *.lua
+s
+grep
+grep -n sl

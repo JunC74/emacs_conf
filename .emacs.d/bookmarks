@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("tbHockshopItemClassify"
+ (filename . "e:/code/client/jw_head/ui/script/window/hockshop.lua")
+ (front-context-string . "	{\"√˚◊÷\", ∑÷¿‡ID, [{")
+ (rear-context-string . "ssify =\n{\n	--[[\n")
+ (position . 951))
+("AddClassTreeList"
+ (filename . "e:/code/client/jw_head/ui/script/window/hockshop.lua")
+ (front-context-string . "me();\n	for i, v ")
+ (rear-context-string . "nTimeNow = GetTi")
+ (position . 23230))
+)

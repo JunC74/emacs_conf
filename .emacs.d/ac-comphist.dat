@@ -1,78 +1,86 @@
-((("nItem" .
-   [1 0 0 0 0])
-  ("self.ONETIME_GUIDE_APPRENTICE" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("ShowTB" .
-   [0 0 0 0 0 1])
-  ("Lib" .
-   [1 0 0])
-  ("self.tbStoneList" .
-   [0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0])
-  ("math.ceil" .
-   [1 0 0 0 0 0 1 0 0])
-  ("..self.nTotalPage" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("nStart" .
-   [2 0 0 0 0 0])
-  ("GetStoneProp" .
-   [0 0 0 0 0 0 0 0 1 0 0 0])
-  ("prop.szName" .
-   [0 0 0 1 0 0 0 0 0 0 0])
-  (".." .
-   [4 0])
-  ("Log" .
-   [5 0 0])
-  ("Txt_SetTxt" .
-   [0 0 0 0 0 0 0 0 0 1])
-  ("v.part" .
-   [1 0 0 0 0 0])
-  ("v.id" .
-   [3 0 0 0])
-  ("self.tbItemList" .
-   [1 0 0 0 0 0 0 0 0 0 1 1 0 0 0])
-  ("nEnd" .
-   [3 0 1 1])
-  ("s" .
-   [1])
-  ("nPageMaxRow" .
-   [0 0 0 0 1 0 0 0 0 0 0])
-  ("self.nPageIndex" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("nState" .
-   [1 0 1 2 0 1])
-  ("self.UIGROUP" .
-   [0 0 0 0 0 1 0 4 2 0 0 1])
-  ("Wnd_Show" .
-   [0 0 0 0 0 3 0 4])
-  ("uiSideBar" .
-   [0 0 0 0 0 0 0 0 1])
-  ("require" .
-   [0 0 0 0 0 1 0])
-  ("function" .
-   [0 0 0 0 0 0 1 1])
-  ("uiLingShiList" .
-   [0 0 0 1 1 0 0 0 0 0 0 0 0])
-  ("LoadTabFile" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("szFileName" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("self" .
-   [8 0 0 0])
-  ("szWnd" .
-   [1 0 0 0 0])
-  ("UiManager" .
-   [0 0 0 0 0 1 0 0 0])
-  ("OpenWindow" .
-   [0 0 0 0 0 0 1 0 0 0])
-  ("Wnd_Hide" .
-   [1 0 0 0 1 1 1 0])
-  ("PlayerGuide" .
-   [1 0 0 0 1 0 1 0 0 0 2])
-  ("PlayerGuide.InsetGuide" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("PlayerGuide.StoneGuide" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1])
+((("asdf" .
+   [2 0 0 0])
+  ("integerp" .
+   [1 0 0 0 0 0 0 0])
+  ("setq" .
+   [1 0 0 0])
+  ("CheckGuideApprentice" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("szActivePage" .
    [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("CheckGuideApprentice" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])))
+  ("PlayerGuide.StoneGuide" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1])
+  ("PlayerGuide.InsetGuide" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("PlayerGuide" .
+   [1 0 0 0 1 0 1 0 0 0 2])
+  ("Wnd_Hide" .
+   [1 0 0 0 1 1 1 0])
+  ("OpenWindow" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("UiManager" .
+   [0 0 0 0 0 1 0 0 0])
+  ("szWnd" .
+   [1 0 0 0 0])
+  ("self" .
+   [8 0 0 0])
+  ("szFileName" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("LoadTabFile" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("uiLingShiList" .
+   [0 0 0 1 1 0 0 0 0 0 0 0 0])
+  ("function" .
+   [0 0 0 0 0 0 1 1])
+  ("require" .
+   [0 0 0 2 0 1 0])
+  ("uiSideBar" .
+   [0 0 0 0 0 0 0 0 1])
+  ("Wnd_Show" .
+   [0 0 0 0 0 3 0 4])
+  ("self.UIGROUP" .
+   [0 0 0 0 0 1 0 4 2 0 0 1])
+  ("nState" .
+   [1 0 1 2 0 1])
+  ("self.nPageIndex" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("nPageMaxRow" .
+   [0 0 0 0 1 0 0 0 0 0 0])
+  ("s" .
+   [1])
+  ("nEnd" .
+   [3 0 1 1])
+  ("self.tbItemList" .
+   [1 0 0 0 0 0 0 0 0 0 1 1 0 0 0])
+  ("v.id" .
+   [3 0 0 0])
+  ("v.part" .
+   [1 0 0 0 0 0])
+  ("Txt_SetTxt" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("Log" .
+   [5 0 0])
+  (".." .
+   [4 0])
+  ("prop.szName" .
+   [0 0 0 1 0 0 0 0 0 0 0])
+  ("GetStoneProp" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])
+  ("nStart" .
+   [2 0 0 0 0 0])
+  ("..self.nTotalPage" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("math.ceil" .
+   [1 0 0 0 0 0 1 0 0])
+  ("self.tbStoneList" .
+   [0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0])
+  ("Lib" .
+   [1 0 0])
+  ("ShowTB" .
+   [0 0 0 0 0 1])
+  ("self.ONETIME_GUIDE_APPRENTICE" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("nItem" .
+   [1 0 0 0 0])
+  ("init_cygwin" .
+   [0 0 0 0 0 0 0 1 0 0 0])))

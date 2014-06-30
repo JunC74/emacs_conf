@@ -67,8 +67,6 @@
 (setq display-time-24hr-format t) 
 ;;时间显示包括日期和具体时间 
 (setq display-time-day-and-date t) 
-;;时间栏旁边启用邮件设置 
-;;(setq display-time-use-mail-icon t) 
 ;;时间的变化频率，单位多少来着？ 
 (setq display-time-interval 10) 
 
@@ -78,7 +76,7 @@
 ;; Emacs只启动一个进程的方法
 ;; 首先，我们必须设置一个环境变量：
 ;; EMACS_SERVER_FILE=C:\.emacs.d\server\server
-;; (server-start)
+(server-start)
 
 ;; 启动最大化
 (run-with-idle-timer 1 nil 'w32-send-sys-command 61488)
@@ -94,13 +92,6 @@
 ;; ibuffer.el
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-;; ;; ido.el
-;; (require 'ido)
-;; (ido-mode t)
-;; (setq ido-enable-flex-matching t)                   ;模糊匹配
-;; (setq ido-everywhere nil)                           ;禁用ido everyting, 拷贝操作不方便
-;; (add-hook 'ido-make-file-list-hook 'ido-sort-mtime) ;文件的排序方法
-;; (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)  ;目录的排序方法
 ;; tabbar.el
 (require 'tabbar)
 (tabbar-mode 1)
@@ -126,15 +117,7 @@
   (global-set-key (kbd "<f5>") (lambda()
                                 (interactive)
                                 (sr-speedbar-toggle)))
-;; ;;
-;; (setq default-fill-column 60)
-;; ;;
-;; (setq-default indent-tabs-mode nil)
-;; (setq default-tab-width 8)
-;; (setq tab-stop-list ())
-;; (loop for x downfrom 40 to 1 do
-;;       (setq tab-stop-list (cons (* x 4) tab-stop-list)))
 ;; 防止页面滚动时跳动， scroll-margin 3 可以在靠近屏幕边沿3行时就开始滚动，可以很好的看到上下文。
 (setq scroll-margin 3  scroll-conservatively 10000)
-;; 
+
 (provide 'init_emacs)
