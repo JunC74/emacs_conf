@@ -1,0 +1,35 @@
+
+;; ----- ido-last-directory-list -----
+(
+ ("z:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/" . "my_config/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "z:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/my_config/"
+ "z:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/"
+ "z:/soft/emacs-24.3/bin/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init_cygwin.el"
+ "init_windows.el"
+ "init.el"
+ "init_emacs.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("z:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/my_config/" (21558 31857 0 0) "init_windows.el" "init_w3m.el" "init_tabbar.el" "init_lua.el" "init_keyboard.el" "init_ido.el" "init_highlight.el" "init_emacs.el~" "init_emacs.el" "init_el_get.el" "init_dired_mode.el" "init_c_mod.el" "init_cygwin.el" "init_color_theme.el" "init_cedet.el" "init_auto_complete.el" "feng-highlight.el" "../" "./")
+
+ ("z:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/" (21558 28414 0 0) "server/" "plugins/" "my_config/" "init.el" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" "../" "./")
+
+ ("z:/Users/JunC/Documents/GitHub/emacs_conf/" (21558 30790 0 0) "_emacs" "README" ".wcy_desktop_save" ".session" ".gitignore" ".git/" ".emacs.d/" ".emacs" "../" "./")
+
+ ("z:/soft/emacs-24.3/bin/" (21556 39377 0 0) "runemacs.exe" "profile.exe" "movemail.exe" "libXpm.dll" "hexl.exe" "etags.exe" "emacsclientw.exe" "emacsclient.exe" "emacs.exe" "ebrowse.exe" "ddeclient.exe" "ctags.exe" "COPYING" "cmdproxy.exe" "addpm.exe" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
+

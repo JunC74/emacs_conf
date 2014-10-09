@@ -36,6 +36,9 @@
 (require 'linum+)  
 (global-linum-mode t)  
 
+;; 显示列号。
+(setq column-number-mode t)
+
 ;; 多窗口
 (require 'window-numbering)
 (window-numbering-mode 1)
@@ -73,153 +76,21 @@
 ;;选择标记设置("Shift+Space")
 (global-set-key [?\S- ] 'set-mark-command)
 
-;; Emacs只启动一个进程的方法
-;; 首先，我们必须设置一个环境变量：
-;; EMACS_SERVER_FILE=C:\.emacs.d\server\server
-;;(setq server-use-tcp t)
-(when (equal system-type 'windows-nt)
-  (server-start))
-
-(when (eq 'windows-nt system-type)
-  ;; 启动最大化
-  (run-with-idle-timer 1 nil 'w32-send-sys-command 61488)
-)
 ;; 王垠的Emacs
 ;; http://docs.huihoo.com/homepage/shredderyin/emacs.html
 ;; session.el
  (require 'session)
  (add-hook 'after-init-hook 'session-initialize)
+
 ;; desktop
 (require  'wcy-desktop)
 (wcy-desktop-init)
+
 ;; ibuffer.el
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-;; ;; tabbar.el
-;; (require 'tabbar)
-;; ;; 设置tabbar外观
-;; ;; 设置默认主题: 字体, 背景和前景颜色，大小
-;; (set-face-attribute 'tabbar-default-face nil
-;;                                         :family "DejaVu Sans Mono"
-;;                                         :background "gray80"
-;;                                         :foreground "gray30"
-;;                                         :height 1.0
-;;                                         )
-;; ;; 设置左边按钮外观：外框框边大小和颜色
-;; (set-face-attribute 'tabbar-button-face nil
-;;                                         :inherit 'tabbar-default
-;;                                         :box '(:line-width 1 :color "yellow70")
-;;                                         )
-;; ;; 设置当前tab外观：颜色，字体，外框大小和颜色
-;; (set-face-attribute 'tabbar-selected-face nil
-;;                                         :inherit 'tabbar-default
-;;                                         :foreground "DarkGreen"
-;;                                         :background "LightGoldenrod"
-;;                                         :box '(:line-width 2 :color "DarkGoldenrod")
-;;                                         :overline "black"
-;;                                         :underline "black"
-;;                                         :weight 'bold
-;;                                         )
-;; ;; 设置非当前tab外观：外框大小和颜色
-;; (set-face-attribute 'tabbar-unselected-face nil
-;;                                         :inherit 'tabbar-default
-;;                                         :box '(:line-width 2 :color "#00B2BF")
-;;                                         )
-;; (tabbar-mode 1)
-;; (global-set-key [(control down)] 'tabbar-backward-group)
-;; (global-set-key [(control up)] 'tabbar-forward-group)
-;; (global-set-key [(control left)] 'tabbar-backward)
-;; (global-set-key [(control right)] 'tabbar-forward)
-;; ;; ;; 只有一组
-;; ;; (setq tabbar-buffer-groups-function
-;; ;;     (lambda (b) (list "All Buffers")))
-;; ;; (setq tabbar-buffer-list-function
-;; ;;     (lambda ()
-;; ;;         (remove-if
-;; ;;           (lambda(buffer)
-;; ;;              (find (aref (buffer-name buffer) 0) " *"))
-;; ;;           (buffer-list))))
-;; ;; sr-speed-bar
 
-;; ido扩展
-(ido-mode t)                                        ;开启ido模式
-(setq ido-enable-flex-matching t)                   ;模糊匹配
-(setq ido-everywhere nil)                           ;禁用ido everyting, 拷贝操作不方便
-(defun ido-my-keys ()
-  "Set up the keymap for `ido'."
 
-  ;; common keys
-  (define-key ido-mode-map "\C-e" 'ido-edit-input)   
-  (define-key ido-mode-map "\t" 'ido-complete) ;; complete partial
-  (define-key ido-mode-map "\C-j" 'ido-select-text)
-  (define-key ido-mode-map "\C-m" 'ido-exit-minibuffer)
-  (define-key ido-mode-map "?" 'ido-completion-help) ;; list completions
-  (define-key ido-mode-map [(control ? )] 'ido-restrict-to-matches)
-  (define-key ido-mode-map [(control ?@)] 'ido-restrict-to-matches)
-
-  ;; cycle through matches
-  (define-key ido-mode-map "\C-r" 'ido-prev-match)
-  (define-key ido-mode-map "\C-s" 'ido-next-match)
-  (define-key ido-mode-map [right] 'ido-next-match)
-  (define-key ido-mode-map [left] 'ido-prev-match)
-
-  ;; toggles
-  (define-key ido-mode-map "\C-t" 'ido-toggle-regexp) ;; same as in isearch
-  (define-key ido-mode-map "\C-p" 'ido-toggle-prefix)
-  (define-key ido-mode-map "\C-c" 'ido-toggle-case)
-  (define-key ido-mode-map "\C-a" 'ido-toggle-ignore)
-
-  ;; keys used in file and dir environment
-  (when (memq ido-cur-item '(file dir))
-    (define-key ido-mode-map "\C-b" 'ido-enter-switch-buffer)
-    (define-key ido-mode-map "\C-d" 'ido-enter-dired)
-    (define-key ido-mode-map "\C-f" 'ido-fallback-command)
-
-    ;; cycle among directories
-    ;; use [left] and [right] for matching files
-    (define-key ido-mode-map [down] 'ido-next-match-dir)
-    (define-key ido-mode-map [up]   'ido-prev-match-dir)
-
-    ;; backspace functions
-    (define-key ido-mode-map [backspace] 'ido-delete-backward-updir)
-    (define-key ido-mode-map "\d"        'ido-delete-backward-updir)
-    (define-key ido-mode-map [(meta backspace)] 'ido-delete-backward-word-updir)
-    (define-key ido-mode-map [(control backspace)] 'ido-up-directory)
-
-    ;; I can't understand this
-    (define-key ido-mode-map [(meta ?d)] 'ido-wide-find-dir)
-    (define-key ido-mode-map [(meta ?f)] 'ido-wide-find-file)
-    (define-key ido-mode-map [(meta ?k)] 'ido-forget-work-directory)
-    (define-key ido-mode-map [(meta ?m)] 'ido-make-directory)
-
-    (define-key ido-mode-map [(meta down)] 'ido-next-work-directory)
-    (define-key ido-mode-map [(meta up)] 'ido-prev-work-directory)
-    (define-key ido-mode-map [(meta left)] 'ido-prev-work-file)
-    (define-key ido-mode-map [(meta right)] 'ido-next-work-file)
-
-    ;; search in the directories
-    ;; use C-_ to undo this
-    (define-key ido-mode-map [(meta ?s)] 'ido-merge-work-directories)
-    (define-key ido-mode-map [(control ?\_)] 'ido-undo-merge-work-directory)
-    )
-
-  (when (eq ido-cur-item 'file)
-    (define-key ido-mode-map "\C-k" 'ido-delete-file-at-head)
-    (define-key ido-mode-map "\C-l" 'ido-toggle-literal)
-    (define-key ido-mode-map "\C-o" 'ido-copy-current-word)
-    (define-key ido-mode-map "\C-v" 'ido-toggle-vc)
-    (define-key ido-mode-map "\C-w" 'ido-copy-current-file-name)
-    )
-
-  (when (eq ido-cur-item 'buffer)
-    (define-key ido-mode-map "\C-b" 'ido-fallback-command)
-    (define-key ido-mode-map "\C-f" 'ido-enter-find-file)
-    (define-key ido-mode-map "\C-k" 'ido-kill-buffer-at-head)
-    ))
-(add-hook 'ido-define-mode-map-hook 'ido-my-keys)
-
-;; (add-hook 'ido-make-file-list-hook 'ido-sort-mtime) ;文件的排序方法
-;; (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)  ;目录的排序方法
 ;; speedbar 扩展
  (require 'sr-speedbar)
  (setq speedbar-show-unknown-files t)

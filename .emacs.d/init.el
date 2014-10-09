@@ -11,14 +11,19 @@
 (require 'init_auto_complete)
 (require 'init_color_theme)
 (require 'init_dired_mode)
-(require 'init_cygwin)
 (require 'init_keyboard)
+(require 'init_ido)
+(require 'init_tabbar)
 (require 'cl)
 
 (when (eq 'cygwin system-type)
   (require 'windows-path)
   (windows-path-activate)
 )
+
+(when (eq 'windows-nt system-type)
+  (require 'init_windows))
+
 (require 'init_highlight)
 ;;(require 'feng-highlight)
 ;; (require 'init_cedet)
