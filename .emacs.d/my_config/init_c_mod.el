@@ -1,12 +1,24 @@
-;;å®šåˆ¶C/C++ç¼©è¿›é£æ ¼
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (c-set-style "k&r")))
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (c-set-style "stroustrup")))
 
-;; è®¾ç½®ç¼©è¿›å­—ç¬¦æ•°
-(setq c-basic-offset 4)
-
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(defun my-c-mode-hook ()
+  (setq c-basic-offset 4))          ;; »ù±¾Ëõ½ø¿í¶È
+        ;; indent-tabs-mode t        ;; ½ûÖ¹¿Õ¸ñÌæ»»Tab
+        ;; default-tab-width 4))     ;; Ä¬ÈÏTab¿í¶È
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
+;; cscope
+;; http://lifegoo.pluskid.org/wiki/EmacsCscope.html#sec2
+;; C-c s a Éè¶¨³õÊ¼»¯µÄÄ¿Â¼£¬Ò»°ãÊÇÄã´úÂëµÄ¸ùÄ¿Â¼
+;; C-s s I ¶ÔÄ¿Â¼ÖĞµÄÏà¹ØÎÄ¼ş½¨Á¢ÁĞ±í²¢½øĞĞË÷Òı
+;; C-c s s ĞòÕÒ·ûºÅ
+;; C-c s g Ñ°ÕÒÈ«¾ÖµÄ¶¨Òå
+;; C-c s c ¿´¿´Ö¸¶¨º¯Êı±»ÄÄĞ©º¯ÊıËùµ÷ÓÃ
+;; C-c s C ¿´¿´Ö¸¶¨º¯Êıµ÷ÓÃÁËÄÄĞ©º¯Êı
+;; C-c s e Ñ°ÕÒÕıÔò±í´ïÊ½
+;; C-c s f Ñ°ÕÒÎÄ¼ş
+;; C-c s i ¿´¿´Ö¸¶¨µÄÎÄ¼ş±»ÄÄĞ©ÎÄ¼şinclude
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+            (require 'xcscope)))
 (provide 'init_c_mod)

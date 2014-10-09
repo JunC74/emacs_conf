@@ -1,0 +1,1 @@
+windows 系统需要在 "C:\Users\$用户名$\AppData\Roaming" 下建立一个.emacs文件，把_emacs文件的内容复制过去，并修改home目录的地址；

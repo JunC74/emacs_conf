@@ -3,7 +3,7 @@
 (ac-config-default)
 ;;使用增强的popup列表
 (require 'pos-tip)
-(setq ac-quick-help-prefer-pos-tip t)   ;default is t
+;;(setq ac-quick-help-prefer-pos-tip t)   ;default is t
 ;;使用quick-help
 (setq ac-use-quick-help t)
 (setq ac-quick-help-delay 1.0)

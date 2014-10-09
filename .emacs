@@ -1,11 +1,11 @@
-(setenv "HOME" "C:/Users/Administrator/Documents/GitHub/emacs_conf")
-(setenv "PATH" "C:/Users/Administrator/Documents/GitHub/emacs_conf")
+ï»¿(setenv "HOME" "Z:/Users/JunC/Documents/GitHub/emacs_conf")
+(setenv "PATH" "Z:/Users/JunC/Documents/GitHub/emacs_conf")
 
 (load "~/.emacs.d/plugins/subdirs.el")
-(mapc 'load (directory-files "~/.emacs.d/config" t "\.el$"))
+(mapc 'load (directory-files "~/.emacs.d/config" t "/.el$"))
 (add-to-list 'load-path "~/.emacs.d")
 (load-file "~/.emacs.d/init.el")
 
-;; windows Â·¾¶ÉèÖÃ
-;; (setenv "PATH" "C:\cygwin64\bin")
-;; (put 'scroll-left 'disabled nil)
+;; windows è·¯å¾„è®¾ç½®
+(setenv "PATH" "C:/cygwin64/bin")
+(put 'scroll-left 'disabled nil)

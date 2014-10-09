@@ -1,15 +1,21 @@
-(setenv "PATH" (concat "C:/cygwin64/bin;" (getenv "PATH")))
-(setq exec-path (cons "C:/cygwin64/bin" exec-path))
-(require 'cygwin-mount)
-(cygwin-mount-activate)
-
-(add-hook 'comint-output-filter-functions
-'shell-strip-ctrl-m nil t)
-(add-hook 'comint-output-filter-functions
-'comint-watch-for-password-prompt nil t)
-(setq explicit-shell-file-name "bash.exe")
-;; For subprocesses invoked via the shell
-;; (e.g., ¡°shell -c command¡±)
-(setq shell-file-name explicit-shell-file-name)
-
+(let* ((cygwin-root "c:/cygwin64")
+         (cygwin-bin (concat cygwin-root "/bin")))
+    (when (and (eq 'windows-nt system-type)
+  	     (file-readable-p cygwin-root))
+    
+      (setq exec-path (cons cygwin-bin exec-path))
+      (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+    
+      ;; By default use the Windows HOME.
+      ;; Otherwise, uncomment below to set a HOME
+      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+    
+      ;; NT-emacs assumes a Windows shell. Change to bash.
+      (setq shell-file-name "bash")
+      (setenv "SHELL" shell-file-name) 
+      (setq explicit-shell-file-name shell-file-name) 
+    
+      ;; This removes unsightly ^M characters that would otherwise
+      ;; appear in the output of java applications.
+      (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
 (provide 'init_cygwin)

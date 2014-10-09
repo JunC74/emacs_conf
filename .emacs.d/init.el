@@ -4,6 +4,7 @@
 (setq emacs-load-start-time (current-time))
 
 ;; 设置加载路径
+(require 'ahei-misc)
 (require 'init_emacs)
 (require 'init_c_mod)
 (require 'init_lua)
@@ -11,11 +12,15 @@
 (require 'init_color_theme)
 (require 'init_dired_mode)
 (require 'init_cygwin)
+(require 'init_keyboard)
+(require 'cl)
 
-(require 'highlight-symbol)
-(global-set-key [(control f3)] 'highlight-symbol-at-point)
-(global-set-key [f3] 'highlight-symbol-next)
-(global-set-key [(shift f3)] 'highlight-symbol-prev)
-(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
-
+(when (eq 'cygwin system-type)
+  (require 'windows-path)
+  (windows-path-activate)
+)
+(require 'init_highlight)
+;;(require 'feng-highlight)
+;; (require 'init_cedet)
+;; (require 'init_el_get)
 (provide 'init)
