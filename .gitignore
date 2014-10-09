@@ -1,0 +1,6 @@
+################
+*.elc
+.session
+.wcy_desktop_save
+abbrev_defs
+ac-comphist.dat
