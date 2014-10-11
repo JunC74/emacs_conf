@@ -11,10 +11,13 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; 不显工具栏
-(tool-bar-mode -1)
+(tool-bar-mode 0)
 
-;; 没有 menubar
-(setq menu-bar-mode nil);
+;; 不显示滚动条
+(scroll-bar-mode 0)  
+
+;; 不显示菜单栏
+(menu-bar-mode 0)
 
 ;; 不生成临时文件
 (setq-default make-backup-files nil)
@@ -100,6 +103,7 @@
   (global-set-key (kbd "<f5>") (lambda()
                                 (interactive)
                                 (sr-speedbar-toggle)))
+
 ;; 防止页面滚动时跳动， scroll-margin 3 可以在靠近屏幕边沿3行时就开始滚动，可以很好的看到上下文。
 (setq scroll-margin 3  scroll-conservatively 10000)
 
@@ -110,6 +114,11 @@
     (insert (format-time-string "%Y/%m/%d %H:%M:%S" (current-time))))
     ;; (insert (format-time-string "%Y/%m/%d" (current-time))))
 ;; (global-set-key "\C-xd" 'insert-current-date) 
+
+;; 设置table的宽度
+(setq default-tab-width 4)
+;; 设置 m-i 的table宽度
+(setq tab-stop-list (number-sequence 4 120 4))
 
 ;; 根据相应的文件名来打开文件
 ;; (defvar wcy-dired-find-file-cmds-alist
@@ -129,9 +138,11 @@
                   (if (buffer-file-name)
                       (dired default-directory))))
 
+;; 保存文件的时候把table换成空格
 (defun untabify-except-makefiles ()
   "Replace tabs with spaces except in makefiles."
   (unless (derived-mode-p 'makefile-mode)
     (untabify (point-min) (point-max))))
 ;;(add-hook 'before-save-hook 'untabify-except-makefiles)
+
 (provide 'init_emacs)

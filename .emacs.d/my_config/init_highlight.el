@@ -18,6 +18,7 @@
 ;; (global-set-key (kbd "C-*") 'highlight-symbol-next) 
 ;; (global-set-key (kbd "C-#") 'highlight-symbol-prev)
 
+;; 对特定的文件使用高亮
 (when window-system
   (am-add-hooks
    '(emacs-lisp-mode-hook lisp-interaction-mode-hook java-mode-hook
@@ -25,6 +26,9 @@
                           sh-mode-hook Info-mode-hook
                           lua-mode-hook)
    'highlight-symbol-mode-on))
+
+;; ;; 对所有的文件使用高亮
+;; (add-hook 'find-file-hook 'idle-highlight-mode)
 
 (defun highlight-symbol-settings ()
   "Settings for `highlight-symbol'."
