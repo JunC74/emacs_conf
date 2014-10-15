@@ -11,16 +11,19 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; 不显工具栏
-(tool-bar-mode 0)
+(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 
 ;; 不显示滚动条
-(scroll-bar-mode 0)  
+(if (functionp 'scroll-bar-mode) (scroll-bar-mode 0))
 
 ;; 不显示菜单栏
 (menu-bar-mode 0)
 
 ;; 不生成临时文件
 (setq-default make-backup-files nil)
+
+;; 允许屏幕左移
+(put 'scroll-left 'disabled nil)
 
 ;; emacs 复制到系统的剪切板
 (setq x-select-enable-clipboard t) 

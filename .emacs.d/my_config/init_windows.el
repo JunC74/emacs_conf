@@ -7,6 +7,9 @@
 ;;(setq server-use-tcp t)
 (server-start)
 
+;; windows cygwin 路径设置
+(setenv "PATH" "C:/cygwin64/bin")
+
 ;; 初始化cygwin环境
 (require 'init_cygwin)
 (provide 'init_windows)
