@@ -4,3 +4,5 @@
 .wcy_desktop_save
 abbrev_defs
 ac-comphist.dat
+/.emacs.d/eshell/history
+/.emacs.d/server/server

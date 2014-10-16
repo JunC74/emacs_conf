@@ -13,7 +13,7 @@
 (require 'init_dired_mode)
 (require 'init_keyboard)
 (require 'init_ido)
-(require 'init_tabbar)
+;; (require 'init_tabbar)
 (require 'cl)
 
 (when (eq 'cygwin system-type)
