@@ -26,6 +26,7 @@
 
 (require 'init_highlight)
 ;;(require 'feng-highlight)
-;; (require 'init_cedet)
+(require 'init_cedet)
+(require 'init_mk_prj)
 ;; (require 'init_el_get)
 (provide 'init)

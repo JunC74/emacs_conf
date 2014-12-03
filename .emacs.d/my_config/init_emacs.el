@@ -36,7 +36,13 @@
 
 ;; 字体设置
 (set-frame-font "Monaco-10")
-(add-to-list 'default-frame-alist '(font . "Monaco-10"))
+(set-fontset-font (frame-parameter nil 'font)
+                    'han '("Microsoft Yahei" . "unicode-bmp"))
+
+;;(add-to-list 'default-frame-alist '(font . "Monaco-12"))
+
+;; 高亮当前行
+;; (global-hl-line-mode 1)					
 
 ;; 显示行号
 (require 'linum+)  
@@ -147,5 +153,13 @@
   (unless (derived-mode-p 'makefile-mode)
     (untabify (point-min) (point-max))))
 ;;(add-hook 'before-save-hook 'untabify-except-makefiles)
+
+;;加载xcscope
+;;(require 'xcscope) 
+
+;; 加载gtags
+(setq gtags-suggested-key-mapping t)
+(require 'gtags)
+
 
 (provide 'init_emacs)
