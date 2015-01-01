@@ -18,13 +18,17 @@
 ;; all the project operations,like grep,find file,gen tags,are depend on the file_index.So without execute "find" command every time when doing these operations,it will be faster!
 ;; need shell commands:find,grep,xargs,cat,sed. Please make sure you have all of the shell commands in system
 ;; #Changes##################################
-;; new prj-example
+;;(load-file "~/.emacs.d/mk-prj.el")
+;;(project-init)
+
+;; new prj-file-example
 ;;(project-def "p"
 ;;      '((basedir          "f:/trunk/program")
 ;;        (src-patterns     ("*.lua"))
 ;;        (subdir     ("game/" "etc/"))
 ;;        (vcs              svn)
 ;;        (open-file-cache t)
+;;		  (open-file-cache-maxn 10)
 ;;        (idle-index t)
 ;;        (pre-startup-hook ecb-activate)
 ;;        (startup-hook project-index)
@@ -93,6 +97,7 @@ expand-file-name. Example: ~me/my-proj/.")
   "if not nil ,search the subdir list from basedir,Otherwise,search all subdir from basedir")
 
 (defvar mk-proj-idle-index nil)
+(defvar mk-proj-default-config-dir "~/.emacs.d/mkprjs/")
 (defvar mk-proj-src-patterns nil
   "List of shell patterns to include in the TAGS file. Optional. Example:
 '(\"*.java\" \"*.jsp\").
@@ -140,6 +145,7 @@ via 'project-index' will save to this file. Value is expanded with
 expand-file-name.")
 
 (defvar mk-proj-open-file-cache nil)
+(defvar mk-proj-open-file-cache-maxn nil)
 (defvar mk-proj-open-files-cache nil
   "Cache the names of open project files in this file. Optional. If set,
 project-load will open all files listed in this file and project-unload will
@@ -215,10 +221,11 @@ value is not used if a custom find command is set in
                               mk-proj-tags-file
                               mk-proj-compile-cmd
                               mk-proj-startup-hook
-                              mk-proj-pre-startup-hook
+							  mk-proj-pre-startup-hook
                               mk-proj-shutdown-hook
                               mk-proj-file-list-cache
                               mk-proj-open-file-cache
+							  mk-proj-open-file-cache-maxn
                               mk-proj-src-find-cmd
                               mk-proj-grep-find-cmd
                               mk-proj-index-find-cmd)
@@ -314,7 +321,19 @@ load time. See also `project-menu-remove'."
 (defun project-def (proj-name config-alist)
   "Associate the settings in <config-alist> with project <proj-name>"
   (puthash proj-name config-alist mk-proj-list))
-
+(defun project-init ()
+  (setq mk-proj-list (make-hash-table :test 'equal))
+  (let ((filelist (directory-files mk-proj-default-config-dir nil "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
+	(dolist (file filelist) (load-file (concat mk-proj-default-config-dir "/" file))
+					  ))
+  )
+(defun project-edit ()
+  "Edit project file"
+  (interactive)
+  	(let ((name (completing-read "Project Name: " (mk-proj-names))))
+	  (find-file (concat mk-proj-default-config-dir "/" name ".el"))
+	  )
+	)
 (defun mk-proj-defaults ()
   "Set all default values for project variables"
   (dolist (var mk-proj-proj-vars)
@@ -322,7 +341,7 @@ load time. See also `project-menu-remove'."
 
 (defun mk-proj-load-vars (proj-name proj-alist)
   "Set project variables from proj-alist"
-  (labels ((config-val (key)
+  (cl-labels ((config-val (key)
             (if (assoc key proj-alist)
                 (car (cdr (assoc key proj-alist)))
               nil))
@@ -335,7 +354,7 @@ load time. See also `project-menu-remove'."
     (setq mk-proj-name (file-name-nondirectory proj-name))
     (setq mk-proj-basedir (file-name-as-directory (expand-file-name (config-val 'basedir))))
     ;; optional vars
-    (dolist (v '(src-patterns ack-args vcs subdir open-file-cache
+    (dolist (v '(src-patterns ack-args vcs subdir open-file-cache open-file-cache-maxn
                  compile-cmd src-find-cmd grep-find-cmd idle-index
                  index-find-cmd startup-hook pre-startup-hook shutdown-hook))
       (maybe-set-var v))
@@ -344,7 +363,62 @@ load time. See also `project-menu-remove'."
  ;   (maybe-set-var 'open-file-cache #'expand-file-name)
     (if (eq nil mk-proj-open-file-cache) nil (setq mk-proj-open-files-cache (concat mk-proj-basedir mk-proj-name "_cache")))
     ))
-
+(defun project-delete (&optional name)
+  "Delete a project file"
+  (interactive)
+  (catch 'project-delete
+	(let ((name (or name (completing-read "Project Name: " (mk-proj-names))))
+		  )
+	(setq tempname (concat mk-proj-default-config-dir "/" name ".el"))
+	(if (file-exists-p tempname) 
+		(delete-file tempname))
+	(project-init)
+	))
+  )
+(defun project-create (&optional name)
+  "Create a project file"
+  (interactive)
+  (catch 'project-create
+	(let
+		((name (or name (read-string "Project Name: ")))
+		 (basedir (read-file-name "Basic dir: "))
+		 (filter (read-string "File Filter(ex:*.lua *.h *.cpp): "))
+		 (subdir (read-string "Sub Dir(ex:src/ include/):if empty, search all dirs "))
+		 (vcs (completing-read "svn or git?: " (list "svn" "git")))
+		 (openfilecache (completing-read "Need Cache OpenFile?: " (list "y" "n")))
+		 (idleindex (completing-read "Need auto index file when idle?: " (list "y" "n")))
+		 (prehook (completing-read "PreStartUpHookFunction(ex:ecb-activate): " (list "ecb-activate")))
+		 (startuphook (completing-read "StartUpHookFunction(ex:project-index): " (list "project-index")))
+		 )
+	  (if (file-exists-p mk-proj-default-config-dir) ()
+		(make-directory mk-proj-default-config-dir)
+      )
+	  
+	  (with-temp-buffer
+		(if (string-equal openfilecache "y") (setq cachen (read-number "Max Cache File Num:(<=0 means no limit)")) (setq cachen 0))
+	    (insert "(project-def \"" name "\"\n" )
+		(insert "\t'((basedir\t\"" basedir "\")\n")
+		(if (not (string-equal filter "")) (insert "\t(src-patterns\t(" (mapconcat (function (lambda (x) (format "\"%s\"" x))) (split-string filter " " t " ") " ") "))\n"))
+		(if (not (string-equal subdir "")) (insert "\t(subdir\t(" (mapconcat (function (lambda (x) (format "\"%s/\"" x))) (split-string subdir " " t " ") " ") "))\n"))
+		(if (string-equal vcs "y") (insert "\t(vcs\t" vcs ")\n"))
+		(if (string-equal openfilecache "y") (insert "\t(open-file-cache\tt)\n"))
+		(if (> cachen 0) (insert (concat"\t(open-file-cache-maxn\t" (format "%s" cachen) ")\n")))
+		(if (string-equal idleindex "y") (insert "\t(idle-index\tt)\n"))
+		(if (not (string-equal prehook "")) (insert "\t(pre-startup-hook\t" prehook ")\n"))
+		(if (not (string-equal startuphook "")) (insert "\t(startup-hook\t" startuphook ")\n"))
+		(insert "))")
+		(setq tempname (concat mk-proj-default-config-dir "/" name ".el"))
+		(if (file-writable-p tempname)
+			(progn
+			  (write-region (point-min)
+							(point-max)
+							tempname)
+			  (message "Wrote Project file to %s" tempname))
+		  (message "Cannot write to %s" tempname)))
+	  (project-init)
+	  )
+	)
+)
 (defun project-load (&optional name)
   "Load a project's settings."
   (interactive)
@@ -440,7 +514,11 @@ load time. See also `project-menu-remove'."
   "Is the given buffer in our project based on filename? Also detects dired buffers open to basedir/*"
   (let ((file-name (mk-proj-buffer-name buf)))
     (if (and file-name
-             (string-match (concat "^" (regexp-quote mk-proj-basedir)) file-name))
+             (string-match (concat "^" (regexp-quote mk-proj-basedir) ".+") file-name)
+			 (not (string-equal (concat mk-proj-basedir mk-proj-name "_index") file-name))
+			 (not (string-equal (concat mk-proj-basedir mk-proj-name "_tags") file-name))
+			 (not (string-equal (concat mk-proj-basedir mk-proj-name "_cache") file-name))
+			 )
         t
       nil)))
 
@@ -467,15 +545,28 @@ load time. See also `project-menu-remove'."
 ;; ---------------------------------------------------------------------
 ;; Save/Restore open files
 ;; ---------------------------------------------------------------------
-
+(defun _sublist (list from to)
+  "Return a sublist of LIST, from FROM to TO.
+Counting starts at 0. Like `substring' but for lists."
+  (let (rtn (c from))
+    (setq list (nthcdr from list))
+    (while (and list (< c to))
+      (push (pop list) rtn)
+      (setq c (1+ c)))
+    (nreverse rtn)))
 (defun mk-proj-save-open-file-info ()
   "Write the list of `files' to a file"
   (when mk-proj-open-files-cache
     (with-temp-buffer
-      (dolist (f (mapcar (lambda (b) (mk-proj-buffer-name b)) (mk-proj-buffers)))
+	  (if mk-proj-open-file-cache-maxn (dolist (f (_sublist (mapcar (lambda (b) (mk-proj-buffer-name b)) (mk-proj-buffers)) 0 mk-proj-open-file-cache-maxn))
         (when f
           (unless (string-equal mk-proj-tags-file f)
             (insert f "\n"))))
+		(dolist (f (mapcar (lambda (b) (mk-proj-buffer-name b)) (mk-proj-buffers)))
+        (when f
+          (unless (string-equal mk-proj-tags-file f)
+            (insert f "\n"))))
+		)
       (if (file-writable-p mk-proj-open-files-cache)
           (progn
             (write-region (point-min)
@@ -913,6 +1004,10 @@ completion. See also: `project-index', `project-find-file-ido'."
     'tools)
 
   ;; define the menu items in reverse order
+  (mk-proj-menu-item 'create   "Create Project"     'project-create t)
+  (mk-proj-menu-item 'delete   "Delete Project"     'project-delete t)
+  (mk-proj-menu-item 'edit   "Edit Project"     'project-edit t)
+  (mk-proj-menu-item-separator 's0)
   (mk-proj-menu-item 'tags   "Build TAGS"     'project-tags)
   (mk-proj-menu-item 'index  "Build Index"    'project-index)
   (mk-proj-menu-item-separator 's2)
@@ -934,7 +1029,7 @@ completion. See also: `project-index', `project-find-file-ido'."
 (when mk-proj-menu-on 
   (project-menu))
 
-(provide 'mk-prj)
+(provide 'mk-project)
 
 ;;; mk-project.el ends here
 
