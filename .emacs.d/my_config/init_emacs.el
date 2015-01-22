@@ -35,7 +35,7 @@
 (global-auto-revert-mode 1)
 
 ;; 字体设置
-(set-frame-font "Monaco-10")
+(set-frame-font "Monaco-12")
 (set-fontset-font (frame-parameter nil 'font)
                     'han '("Microsoft Yahei" . "unicode-bmp"))
 
@@ -94,9 +94,9 @@
  (require 'session)
  (add-hook 'after-init-hook 'session-initialize)
 
-;; desktop
-(require  'wcy-desktop)
-(wcy-desktop-init)
+;; desktop  mk-prj有了文件缓存
+;; (require  'wcy-desktop)
+;; (wcy-desktop-init)
 
 ;; ibuffer.el
 (require 'ibuffer)

@@ -14,12 +14,20 @@
 (require 'flymake-lua)
 (require 'lua-block)
 
+(defun junc-newline-indent ()
+  "indent-newline-indent"
+  (interactive "*")
+  (indent-according-to-mode)
+  (delete-horizontal-space t)
+  (newline)
+  (indent-according-to-mode))
+
 (defun my-lua-mod-hook ()
   "JunC's Lua mod Config"
   (flymake-lua-load)
   (lua-block-mode t)
   (setq lua-indent-level 4)
-  (local-set-key (kbd "RET") 'newline-and-indent) ;回车键后下一行代码自动缩进
+  ;; (local-set-key (kbd "RET") 'junc-newline-indent) ;回车键后下一行代码自动缩进
   (modify-syntax-entry ?_ "w")
   (setq indent-tabs-mode nil))
 (add-hook 'lua-mode-hook 'my-lua-mod-hook)
