@@ -13,13 +13,14 @@
 
 (setq exec-path (append exec-path '("z:/soft/emacs-24.3/global/bin")))
 ;; 初始化cygwin环境
-(require 'init_cygwin)
+;; (require 'init_cygwin)
 ;;(require 'init_project)
 
 ;; 设置Tex
 ;; (setq TeX-view-program-list
 ;;       '(("SumatraPDF "D:/soft/SumatraPDF-3.0/SumatraPDF.exe %o")))
 
+(require 'init_mk_prj)
 (project-def "xy-h"
       '((basedir          "C:/Users/JunC/code/xoyo_head")
         (src-patterns     ("*.lua"))
@@ -33,6 +34,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "xy-b"
@@ -48,6 +51,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "9k-h"
@@ -63,6 +68,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "9k-b"
@@ -78,6 +85,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "vn-h"
@@ -93,6 +102,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "vn-b"
@@ -108,6 +119,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "jw-h"
@@ -123,6 +136,8 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "jw-b"
@@ -138,10 +153,12 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook xoyo-project-init)
+		(shutdown-hook shutdown-hook)
         ))
 
 (project-def "f-h"
-      '((basedir          "c:/Users/JunC/code/FFF")
+      '((basedir          "c:/Users/JunC/code/FFF/")
         (src-patterns     ("*.lua"))
         (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/"))
         (vcs              svn)
@@ -153,7 +170,24 @@
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
         ))
-		
+
+(project-def "fg-h"
+      '((basedir          "c:/Users/JunC/code/fff-guideui/")
+        (src-patterns     ("*.lua"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/"))
+        (vcs              svn)
+		(open-file-cache t)
+		(open-file-cache-maxn 10)
+		(idle-index t)
+		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
+		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
+		(open-files-cache "p_cache")
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
+        ))
+
 (provide 'init_windows)
 

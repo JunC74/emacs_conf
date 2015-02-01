@@ -19,6 +19,19 @@
 ;; 不显示菜单栏
 (menu-bar-mode 0)
 
+;; (setq backup-directory-alist '(("." . "~/emacs_backups")));;设置备份文件的路径 
+;; (setq backup-by-copying t);;备份设置方法，直接拷贝 
+;; ;; Emacs 中，改变文件时，默认都会产生备份文件(以 ~ 结尾的文件)。可以完全去掉 
+;; ;; (并不可取)，也可以制定备份的方式。这里采用的是，把所有的文件备份都放在一 
+;; ;; 个固定的地方("~/backups")。对于每个备份文件，保留最原始的两个版本和最新的 
+;; ;; 1个版本。并且备份的时候，备份文件是复本，而不是原件。 
+ 
+;; (setq make-backup-files nil)
+;; ;; 设定不产生备份文件 
+ 
+;; ;(setq auto-save-mode t) 
+;; ;;自动保存模式
+
 ;; 不生成临时文件
 (setq-default make-backup-files nil)
 
@@ -161,5 +174,7 @@
 (setq gtags-suggested-key-mapping t)
 (require 'gtags)
 
+
+(prefer-coding-system 'utf-8)
 
 (provide 'init_emacs)
