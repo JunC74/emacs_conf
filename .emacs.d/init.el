@@ -5,16 +5,10 @@
 
 ;; 设置加载路径
 (require 'ahei-misc)
+(require 'init_el_get)
 (require 'init_emacs)
 (require 'init_c_mod)
-(require 'init_lua)
-(require 'init_auto_complete)
-(require 'init_color_theme)
-(require 'init_dired_mode)
 (require 'init_keyboard)
-(require 'init_ido)
-;; (require 'init_tabbar)
-(require 'cl)
 
 (when (eq 'cygwin system-type)
   (require 'windows-path)
@@ -24,11 +18,8 @@
 (when (eq 'windows-nt system-type)
   (require 'init_windows))
 
-(require 'init_highlight)
 ;;(require 'feng-highlight)
 (require 'init_cedet)
 (require 'init_mk_prj)
-(require 'init_glsl)
-;; (require 'init_el_get)
 
 (provide 'init)

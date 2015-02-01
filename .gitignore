@@ -8,3 +8,4 @@ ac-comphist.dat
 /.emacs.d/server/server
 /.emacs.d/auto-save-list
 /.emacs.d/eshell
+/.emacs.d/my_config/*.el~

@@ -1,7 +1,0 @@
-(require 'w3m-load)
-;; (require 'w3m-e21)
-;; (setq w3m-use-favicon nil)
-;; (setq w3m-command-arguments '("-cookie" "-F"))
-;; (setq w3m-use-cookies t)
-;; (setq w3m-home-page "http://www.google.com")
-(provide 'init_w3m)

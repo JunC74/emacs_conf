@@ -58,19 +58,11 @@
 ;; (global-hl-line-mode 1)					
 
 ;; 显示行号
-(require 'linum+)  
+;;(require 'linum+)  
 (global-linum-mode t)  
 
 ;; 显示列号。
 (setq column-number-mode t)
-
-;; 多窗口
-(require 'window-numbering)
-(window-numbering-mode 1)
-(winner-mode 1)
-;; copied from http://puntoblogspot.blogspot.com/2011/05/undo-layouts-in-emacs.html
-(global-set-key (kbd "C-x 4 u") 'winner-undo)
-(global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 ;; 把缺省的 major mode 设置为 text-mode
 (setq default-major-mode 'text-mode)
@@ -104,15 +96,15 @@
 ;; 王垠的Emacs
 ;; http://docs.huihoo.com/homepage/shredderyin/emacs.html
 ;; session.el
- (require 'session)
- (add-hook 'after-init-hook 'session-initialize)
+;; (require 'session)
+(add-hook 'after-init-hook 'session-initialize)
 
 ;; desktop  mk-prj有了文件缓存
-;; (require  'wcy-desktop)
-;; (wcy-desktop-init)
+(require  'wcy-desktop)
+(wcy-desktop-init)
 
 ;; ibuffer.el
-(require 'ibuffer)
+;;(require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
@@ -172,7 +164,7 @@
 
 ;; 加载gtags
 (setq gtags-suggested-key-mapping t)
-(require 'gtags)
+;;(require 'gtags)
 
 
 (prefer-coding-system 'utf-8)
