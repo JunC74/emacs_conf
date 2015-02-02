@@ -8,8 +8,8 @@
 (server-start)
 
 ;; windows cygwin 路径设置
-;;(setenv "PATH" (concat "C:/cygwin64/bin;" (getenv "PATH")))
-;;(setenv "PATH" (concat "z:/soft/emacs-24.3/global/bin;" (getenv "PATH")))
+(setenv "PATH" (concat "C:/cygwin64/bin;" (getenv "PATH")))
+(setenv "PATH" (concat "z:/soft/emacs-24.3/global/bin;" (getenv "PATH")))
 
 (setq exec-path (append exec-path '("z:/soft/emacs-24.3/global/bin")))
 ;; 初始化cygwin环境
@@ -28,14 +28,14 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/xoyo_head/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
-		(pre-startup-hook xoyo-project-init)
-		(shutdown-hook shutdown-hook)
+		;; (pre-startup-hook xoyo-project-init)
+		;; (shutdown-hook shutdown-hook)
         ))
 
 (project-def "xy-b"
@@ -45,7 +45,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/xoyo_branches/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -62,7 +62,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/9k_head/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -79,7 +79,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/9k_branches/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -96,14 +96,14 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/vn_head/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
         ;(open-files-cache "p_cache")
         ;;(startup-hook    project-index)
-		(pre-startup-hook xoyo-project-init)
-		(shutdown-hook shutdown-hook)
+		;; (pre-startup-hook xoyo-project-init)
+		;; (shutdown-hook shutdown-hook)
         ))
 
 (project-def "vn-b"
@@ -113,7 +113,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/vn_branches/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -130,7 +130,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/jw_head/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -147,7 +147,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "C:/Users/JunC/code/jw_branches/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -164,7 +164,7 @@
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
+;;		(idle-index t)
 		(tags-file "c:/Users/JunC/code/FFF/TAGS")
 		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
 		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
@@ -174,20 +174,23 @@
 		(shutdown-hook shutdown-hook)
         ))
 
-(project-def "fg-h"
+(project-def "f-guide"
       '((basedir          "c:/Users/JunC/code/fff-guideui/")
         (src-patterns     ("*.lua"))
         (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/"))
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
-		(idle-index t)
-		;; (file-list-cache "z:/code/xoyo/xoyo_head/files")
-		;; (open-files-cache "z:/code/xoyo/xoyo_head/open-files")
-		(open-files-cache "p_cache")
+;;		(idle-index t)
+		(tags-file "c:/Users/JunC/code/fff-guideui/TAGS")
 		(pre-startup-hook fff-project-init)
 		(shutdown-hook shutdown-hook)
         ))
+
+;; emacs TAGS
+(setq tags-table-list 
+	  '("c:/Program Files/emacs-24.4-bin-i686-pc-mingw32/share/emacs/TAGS"
+		"d:/Users/JunC/Documents/GitHub/emacs_conf/.emacs.d/TAGS")) 
 
 (provide 'init_windows)
 

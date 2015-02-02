@@ -166,7 +166,6 @@
 (setq gtags-suggested-key-mapping t)
 ;;(require 'gtags)
 
-
 (prefer-coding-system 'utf-8)
 
 (provide 'init_emacs)

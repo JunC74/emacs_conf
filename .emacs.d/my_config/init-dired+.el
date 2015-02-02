@@ -2,7 +2,7 @@
 ;; 2. s x 按照文件扩展名排序。
 ;; 3. s t 按照文件访问时间排序。
 ;; 4. s b 按照文件名称的字母顺序排序。
-(setq diredp-hide-details-propagate-flag nil)
+;;(setq diredp-hide-details-propagate-flag nil)
 
 (add-hook 'dired-mode-hook (lambda ()
   (interactive)
