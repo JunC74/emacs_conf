@@ -21,5 +21,7 @@
 ;;(require 'feng-highlight)
 (require 'init_cedet)
 (require 'init_mk_prj)
-
+(require 'init-wcy-swbuff)
+(require 'init-hl-line)
+(require 'init-zone-matrix)
 (provide 'init)

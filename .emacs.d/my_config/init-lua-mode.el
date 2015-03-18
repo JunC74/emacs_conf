@@ -12,6 +12,7 @@
 ;;            '(lambda () 
 ;;               (setq indent-tabs-mode nil) ))
 (require 'lua-block)
+;; (require 'init-hl-line)
 
 (defun junc-newline-indent ()
   "indent-newline-indent"
@@ -25,6 +26,7 @@
   "JunC's Lua mod Config"
   (flymake-lua-load)
   (lua-block-mode t)
+  (hl-line-mode 1)
   (setq lua-indent-level 4)
   ;; (local-set-key (kbd "RET") 'junc-newline-indent) ;回车键后下一行代码自动缩进
   (modify-syntax-entry ?_ "w")
