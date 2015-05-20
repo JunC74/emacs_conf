@@ -24,4 +24,6 @@
 (require 'init-wcy-swbuff)
 (require 'init-hl-line)
 (require 'init-zone-matrix)
+(require 'init-font-align)
+(require 'init-run-file)
 (provide 'init)

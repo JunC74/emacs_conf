@@ -4,6 +4,6 @@
 (require 'zone-settings)
 
 (setq zone-programs [zone-matrix])
-(zone-when-idle 60)
+(zone-when-idle (* 60 15))
 
 (provide 'init-zone-matrix)

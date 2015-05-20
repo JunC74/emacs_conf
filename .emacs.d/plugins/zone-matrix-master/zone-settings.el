@@ -103,11 +103,11 @@
   ;; (setq zmx-unicode-mode t)
   ;; trigger screen saver when Emacs is idle for a while
   (zone-when-idle (* 60
-                     1 ;; personally I feel 15 minutes is fine
+                     15 ;; personally I feel 15 minutes is fine
                      ))
   )
 
-(zone-settings) 
+(zone-settings)
 
 
 (provide 'zone-settings)

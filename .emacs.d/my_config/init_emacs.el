@@ -48,6 +48,12 @@
 (global-auto-revert-mode 1)
 
 ;; 字体设置
+(defvar emacs-english-font "Monaco"
+  "The font name of English.")
+
+(defvar emacs-cjk-font "Hiragino Sans GB W3"
+  "The font name for CJK.")
+
 (set-frame-font "Monaco-12")
 (set-fontset-font (frame-parameter nil 'font)
                     'han '("Microsoft Yahei" . "unicode-bmp"))
@@ -167,5 +173,41 @@
 ;;(require 'gtags)
 
 (prefer-coding-system 'utf-8)
+
+(setq ansi-color-for-comint-mode t)
+(customize-group 'ansi-colors)
+(kill-this-buffer);关闭customize窗口
+;; (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; org 中的对其设置
+;; (custom-set-faces
+;;   ;; custom-set-faces was added by Custom.
+;;   ;; If you edit it by hand, you could mess it up, so be careful.
+;;   ;; Your init file should contain only one such instance.
+;;   ;; If there is more than one, they won't work right.
+;;  '(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000"
+;;                          :inverse-video nil :box nil :strike-through nil :overline nil
+;;                          :underline nil :slant normal :weight normal :height 120
+;;                          :width normal :foundry "unknown" :family "Liberation Mono")))))
+
+;; (if (and (fboundp 'daemonp) (daemonp))
+;;     (add-hook 'after-make-frame-functions
+;;               (lambda (frame)
+;;                 (with-selected-frame frame
+;;                   (set-fontset-font "fontset-default"
+;;                                     'chinese-gbk "WenQuanYi Micro Hei Mono 15"))))
+;;   (set-fontset-font "fontset-default" 'chinese-gbk "WenQuanYi Micro Hei Mono 15"))
+
+(defun wl-org-column-view-uses-fixed-width-face ()
+  ;; copy from org-faces.el
+  (when (fboundp 'set-face-attribute)
+    ;; Make sure that a fixed-width face is used when we have a column table.
+    (set-face-attribute 'org-column nil
+                        :height (face-attribute 'default :height)
+                        :family (face-attribute 'default :family))))
+
+(when (and (fboundp 'daemonp) (daemonp))
+  (add-hook 'org-mode-hook 'wl-org-column-view-uses-fixed-width-face))
 
 (provide 'init_emacs)

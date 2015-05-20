@@ -9,3 +9,7 @@ ac-comphist.dat
 /.emacs.d/auto-save-list
 /.emacs.d/eshell
 /.emacs.d/my_config/*.el~
+/.emacs.d/auctex-11.88-e24.4-msw
+/.emacs.d/elpa
+/.emacs.d/el-get/auto-complete
+/.emacs.d/el-get/color-theme-solarized

@@ -20,10 +20,12 @@
 
 (defun xoyo-project-init ()
   "设置“逍遥江湖”工程的编码格式"
-  (prefer-coding-system 'utf-8))
+  (prefer-coding-system 'gb2312))
+
 (defun fff-project-init()
   "设置“萌仙”工程的编码格式"
-  (prefer-coding-system 'gb2313))
+  (prefer-coding-system 'utf-8))
+
 (defun shutdown-hook()
   "恢复为utf-8格式"
   (prefer-coding-system 'utf-8))
