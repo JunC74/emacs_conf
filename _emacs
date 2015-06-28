@@ -1,5 +1,6 @@
-;; Ö¸ÏòÕæÕýµÄhomeÄ¿Â¼
-(setq RealPath "Z:/Users/JunC/Documents/GitHub/emacs_conf")
-(setenv "HOME" RealPath)
-(setenv "PATH" RealPath)
-(load-file "~/.emacs")
+ï»¿(load "~/.emacs.d/plugins/subdirs.el")
+(mapc 'load (directory-files "~/.emacs.d" t "/.el$"))
+;;(add-to-list 'load-path "~/.emacs.d")
+(load-file "~/.emacs.d/init.el")
+
+(put 'narrow-to-region 'disabled nil)
