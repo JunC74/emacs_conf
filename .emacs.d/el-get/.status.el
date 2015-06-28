@@ -2,7 +2,7 @@
 				(:name ample-regexps :description "Compose and reuse Emacs regular expressions with ease" :type github :pkgname "immerrr/ample-regexps.el"))
  (auto-complete status "installed" recipe
 				(:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
-					   (popup fuzzy pos-tip)
+					   (popup fuzzy)
 					   :features auto-complete-config :post-init
 					   (progn
 						 (add-to-list 'ac-dictionary-directories
@@ -33,7 +33,7 @@
  (el-get status "installed" recipe
 		 (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "master" :pkgname "dimitri/el-get" :info "." :compile
 				("el-get.*\\.el$" "methods/")
-				:load "el-get.el" :post-init
+				:features el-get :post-init
 				(when
 					(memq 'el-get
 						  (bound-and-true-p package-activated-list))
@@ -81,6 +81,11 @@
 		   (:name lua-mode :description "A major-mode for editing Lua scripts" :depends
 				  (ample-regexps)
 				  :type github :pkgname "immerrr/lua-mode"))
+ (maxframe status "installed" recipe
+		   (:name maxframe :description "Maxframe provides the ability to maximize the emacs frame and stay within the display resolution." :type github :pkgname "rmm5t/maxframe.el" :prepare
+				  (progn
+					(autoload 'maximize-frame "maxframe" "Maximizes the frame to fit the display if under a windowing\nsystem." t)
+					(autoload 'restore-frame "maxframe" "Restores a maximized frame.  See `maximize-frame'." t))))
  (package status "installed" recipe
 		  (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
 				 (progn
@@ -118,6 +123,9 @@
 				 :load-path
 				 ("lisp")
 				 :url "http://downloads.sourceforge.net/project/emacs-session/session/session-2.3a.tar.gz"))
+ (smex status "installed" recipe
+	   (:name smex :description "M-x interface with Ido-style fuzzy matching." :type github :pkgname "nonsequitur/smex" :features smex :post-init
+			  (smex-initialize)))
  (tabbar status "installed" recipe
 		 (:name tabbar :description "Display a tab bar in the header line." :type github :pkgname "dholm/tabbar" :lazy t))
  (window-number status "installed" recipe

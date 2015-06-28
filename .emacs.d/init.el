@@ -9,20 +9,11 @@
 (require 'init_emacs)
 (require 'init_c_mod)
 (require 'init_keyboard)
-
-(when (eq 'cygwin system-type)
-  (require 'windows-path)
-  (windows-path-activate)
-)
-
-(when (eq 'windows-nt system-type)
-  (require 'init_windows))
-
-;;(require 'feng-highlight)
+(require 'init-system-environment)
 (require 'init_cedet)
 (require 'init_mk_prj)
-(require 'init-wcy-swbuff)
-(require 'init-hl-line)
+;; (require 'init-wcy-swbuff)
+;; (require 'init-hl-line)
 (require 'init-zone-matrix)
 (require 'init-font-align)
 (require 'init-run-file)

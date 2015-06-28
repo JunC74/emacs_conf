@@ -1,5 +1,5 @@
-;; cedet µÄ»ù±¾ÅäÖÃ
-;; ÍøÖ·£ºhttp://emacser.com/cedet.htm#sec-4.3
+;; cedet çš„åŸºæœ¬é…ç½®
+;; ç½‘å€ï¼šhttp://emacser.com/cedet.htm#sec-4.3
 
 (require 'cedet)
 (setq imenu-auto-rescan t)

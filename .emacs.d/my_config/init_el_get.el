@@ -6,6 +6,6 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(setq el-get-user-package-directory "~/.emacs.d/my_config")
+(setq el-get-user-package-directory "~/.emacs.d/elgetinit/")
 (el-get 'sync)
 (provide 'init_el_get)

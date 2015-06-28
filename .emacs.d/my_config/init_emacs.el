@@ -54,9 +54,9 @@
 (defvar emacs-cjk-font "Hiragino Sans GB W3"
   "The font name for CJK.")
 
-(set-frame-font "Monaco-12")
-(set-fontset-font (frame-parameter nil 'font)
-                    'han '("Microsoft Yahei" . "unicode-bmp"))
+;; (set-frame-font "Monaco-12")
+;; (set-fontset-font (frame-parameter nil 'font)
+;;                     'han '("Microsoft Yahei" . "unicode-bmp"))
 
 ;;(add-to-list 'default-frame-alist '(font . "Monaco-12"))
 
@@ -103,7 +103,7 @@
 ;; http://docs.huihoo.com/homepage/shredderyin/emacs.html
 ;; session.el
 ;; (require 'session)
-(add-hook 'after-init-hook 'session-initialize)
+;; (add-hook 'after-init-hook 'session-initialize)
 
 ;; desktop  mk-prj有了文件缓存
 (require  'wcy-desktop)
@@ -137,6 +137,7 @@
 
 ;; 设置table的宽度
 (setq default-tab-width 4)
+
 ;; 设置 m-i 的table宽度
 (setq tab-stop-list (number-sequence 4 120 4))
 
@@ -150,23 +151,12 @@
 ;;     ("\\.ppt$" "start" file-name)
 ;;     ("\\.tab$" "start" file-name))
 
-;; 快速打开文件所在的目录
-;; C-x C-j open the directory of current buffer
-(global-set-key (kbd "C-x C-j")
-                (lambda ()
-                  (interactive)
-                  (if (buffer-file-name)
-                      (dired default-directory))))
-
 ;; 保存文件的时候把table换成空格
 (defun untabify-except-makefiles ()
   "Replace tabs with spaces except in makefiles."
   (unless (derived-mode-p 'makefile-mode)
     (untabify (point-min) (point-max))))
 ;;(add-hook 'before-save-hook 'untabify-except-makefiles)
-
-;;加载xcscope
-;;(require 'xcscope) 
 
 ;; 加载gtags
 (setq gtags-suggested-key-mapping t)
