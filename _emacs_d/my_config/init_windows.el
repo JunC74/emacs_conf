@@ -111,9 +111,20 @@
         ))
 
 (project-def "f-h"
-      '((basedir          "c:/Users/JunC/code/FFF/truck/")
+      '((basedir          "c:/Users/JunC/code/FFF/trunk/")
         (src-patterns     ("*.lua" "*.h" "*.c" "*.cpp"))
-        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/cross_scripts/" "server/gateway_scripts/" "code/"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/cross_scripts/" "server/game_statistics_scripts" "server/gateway_scripts/" "code/"))
+        (vcs              svn)
+		(open-file-cache t)
+		(open-file-cache-maxn 10)
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
+        ))
+
+(project-def "f-tp"
+      '((basedir          "c:/Users/JunC/code/FFF/snake-newfight/")
+        (src-patterns     ("*.lua"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/"))
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
@@ -135,7 +146,18 @@
 (project-def "f-tongbutui"
       '((basedir          "e:/code/FFF/tongbutui/")
         (src-patterns     ("*.lua"))
-        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/" "server/cross_scripts"))
+        (vcs              svn)
+		(open-file-cache t)
+		(open-file-cache-maxn 10)
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
+        ))
+
+(project-def "f-tongbutui-sos"
+      '((basedir          "e:/code/FFF/tongbutui_sos/")
+        (src-patterns     ("*.lua"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/" "server/cross_scripts"))
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
@@ -146,7 +168,7 @@
 (project-def "f-apple"
       '((basedir          "e:/code/FFF/tongbutui_2014-7-21/")
         (src-patterns     ("*.lua"))
-        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/" "server/cross_scripts"))
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
