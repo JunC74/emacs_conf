@@ -13,3 +13,12 @@ ac-comphist.dat
 /.emacs.d/elpa
 /.emacs.d/el-get/auto-complete
 /.emacs.d/el-get/color-theme-solarized
+/.emacs.d.back
+/.emacs.d
+/.subversion
+/.srecode
+/.semanticdb
+/.emacs
+/.bash_history
+/.ido.last
+/#.ido.last#
