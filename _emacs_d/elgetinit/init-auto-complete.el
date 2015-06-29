@@ -1,14 +1,14 @@
 (require 'auto-complete-config)
 
 (ac-config-default)
-;;Ê¹ÓÃÔöÇ¿µÄpopupÁĞ±í
+;;ä½¿ç”¨å¢å¼ºçš„popupåˆ—è¡¨
 ;; (require 'pos-tip)
 ;;(setq ac-quick-help-prefer-pos-tip t)   ;default is t
-;;Ê¹ÓÃquick-help
+;;ä½¿ç”¨quick-help
 (setq ac-use-quick-help t)
 (setq ac-quick-help-delay 1.0)
-;;Ê¹ÓÃfuzzy¹¦ÄÜ(ÊäÈë´íÎóĞÅÏ¢µÄÊ±ºò£¬ÈÔ¾É²ÉÓÃÄ£ºıÆ¥ÅäÈ¥¸ø³öºÏÀíµÄ²¹È«¹Ø¼ü×Ö)
+;;ä½¿ç”¨fuzzyåŠŸèƒ½(è¾“å…¥é”™è¯¯ä¿¡æ¯çš„æ—¶å€™ï¼Œä»æ—§é‡‡ç”¨æ¨¡ç³ŠåŒ¹é…å»ç»™å‡ºåˆç†çš„è¡¥å…¨å…³é”®å­—)
 (setq ac-fuzzy-enable t)
-;;ÉèÖÃtab¼üµÄÊ¹ÓÃÄ£Ê½
+;;è®¾ç½®tabé”®çš„ä½¿ç”¨æ¨¡å¼
 (setq ac-dwim t)
 (provide 'init_auto_complete)

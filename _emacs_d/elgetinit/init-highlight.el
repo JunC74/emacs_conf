@@ -4,6 +4,7 @@
 
 ;; emacser.com/highlight-symbol.htm
 
+(require 'ahei-misc)
 (require 'util)
 
 ;; (global-set-key (kbd "M-s j") 'highlight-symbol-at-point) 
