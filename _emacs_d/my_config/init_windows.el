@@ -1,22 +1,22 @@
-;; 启动最大化
+;; 鍚姩鏈�澶у寲
 (run-with-idle-timer 1 nil 'w32-send-sys-command 61488)
 
-;; Emacs只启动一个进程的方法
-;; 首先，我们必须设置一个环境变量：
+;; Emacs鍙惎鍔ㄤ竴涓繘绋嬬殑鏂规硶
+;; 棣栧厛锛屾垜浠繀椤昏缃竴涓幆澧冨彉閲忥細
 ;; EMACS_SERVER_FILE=C:\.emacs.d\server\server
 ;;(setq server-use-tcp t)
 (server-start)
 
-;; windows cygwin 路径设置
+;; windows cygwin 璺緞璁剧疆
 (setenv "PATH" (concat "C:/cygwin64/bin;" (getenv "PATH")))
 (setenv "PATH" (concat "z:/soft/emacs-24.3/global/bin;" (getenv "PATH")))
 
 (setq exec-path (append exec-path '("z:/soft/emacs-24.3/global/bin")))
-;; 初始化cygwin环境
+;; 鍒濆鍖朿ygwin鐜
 ;; (require 'init_cygwin)
 ;;(require 'init_project)
 
-;; 设置Tex
+;; 璁剧疆Tex
 ;; (setq TeX-view-program-list
 ;;       '(("SumatraPDF "D:/soft/SumatraPDF-3.0/SumatraPDF.exe %o")))
 

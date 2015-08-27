@@ -91,7 +91,7 @@
 (project-def "f-h"
       '((basedir          "~/Documents/work/fff/trunk/")
         (src-patterns     ("*.lua" "*.h" "*.c" "*.cpp"))
-        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/cross_scripts/" "server/gateway_scripts/" "code/"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/cross_scripts/" "server/gateway_scripts/" ))
         (vcs              svn)
 		(open-file-cache t)
 		(open-file-cache-maxn 10)
@@ -143,6 +143,36 @@
 		(shutdown-hook shutdown-hook)
         ))
 
+(project-def "f-tp"
+      '((basedir          "~/Documents/work/fff/mengxian-main-all/")
+        (src-patterns     ("*.lua"))
+        (subdir     ("client/scripts/" "server/zone_scripts/" "server/world_scripts/" "server/store_scripts/" "server/tool_scripts/" "server/gateway_scripts/" "server/cross_scripts" "server/ext_res"))
+        (vcs              svn)
+		(open-file-cache t)
+		(open-file-cache-maxn 10)
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
+        ))
+
+(project-def "sanzhan"
+      '((basedir          "~/Documents/work/sanzhan/universe/")
+        (src-patterns     ("*.lua" "*.c" "*.h"))
+        (subdir     ("game" "gate" "script"))
+        (vcs              git)
+		(open-file-cache t)
+		(open-file-cache-maxn 10)
+		(pre-startup-hook fff-project-init)
+		(shutdown-hook shutdown-hook)
+        ))
+
+(project-def "libuv"
+			 '((basedir	"~/Documents/git/libuv/")
+			   (src-patterns ("*.h" "*.c"))
+			   (subdir ("include" "src" "samples"))
+			   (vcs git)
+			   (open-file-cache t)
+			   (open-file-cache-maxn 10)
+			   ))
 ;; emacs TAGS
 ;; (setq tags-table-list 
 ;; 	  '("c:/Program Files/emacs-24.4-bin-i686-pc-mingw32/share/emacs/TAGS"

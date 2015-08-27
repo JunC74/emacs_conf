@@ -28,7 +28,7 @@
   (lua-block-mode t)
   (hl-line-mode 1)
   (setq lua-indent-level 2)
-  ;; (local-set-key (kbd "RET") 'junc-newline-indent) ;»Ø³µ¼üºóÏÂÒ»ĞĞ´úÂë×Ô¶¯Ëõ½ø
+  ;; (local-set-key (kbd "RET") 'junc-newline-indent) ;å›è½¦é”®åä¸‹ä¸€è¡Œä»£ç è‡ªåŠ¨ç¼©è¿›
   (modify-syntax-entry ?_ "w")
   (setq indent-tabs-mode nil))
 (add-hook 'lua-mode-hook 'my-lua-mod-hook)
